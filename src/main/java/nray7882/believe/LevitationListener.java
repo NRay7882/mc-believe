@@ -39,7 +39,7 @@ class LevitationListener implements Listener {
             boolean hitByShulkerBullet = hitByShulkerBulletMap.getOrDefault(player.getUniqueId(), false);
             if (hitByShulkerBullet) {
                 System.out.println(player.getName() + " - SHULKER BULLET");
-                player.playSound(player.getLocation(), "custom.believe", 1.0f, 1.0f);
+                player.playSound(player.getLocation(), "custom.believe", 5.0f, 1.0f);
                 hitByShulkerBulletMap.remove(player.getUniqueId());
             }
         }
