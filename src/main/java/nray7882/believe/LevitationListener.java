@@ -32,13 +32,16 @@ class LevitationListener implements Listener {
             return;
         }
 
-        Player player = (Player) event.getEntity();
+        // Ignore events that aren't the addition of a new effect
+        if (event.getAction() != EntityPotionEffectEvent.Action.ADDED) {
+            return;
+        }
 
-        if (player.hasPotionEffect(PotionEffectType.LEVITATION)) {
-            System.out.println("CONDITIONS MET");
+        // Check if the added effect is Levitation
+        if (event.getNewEffect().getType().equals(PotionEffectType.LEVITATION)) {
+            Player player = (Player) event.getEntity();
             boolean hitByShulkerBullet = hitByShulkerBulletMap.getOrDefault(player.getUniqueId(), false);
             if (hitByShulkerBullet) {
-                System.out.println(player.getName() + " - SHULKER BULLET");
                 player.playSound(player.getLocation(), "custom.believe", 5.0f, 1.0f);
                 hitByShulkerBulletMap.remove(player.getUniqueId());
             }
