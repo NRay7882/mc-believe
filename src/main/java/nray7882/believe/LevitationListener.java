@@ -20,7 +20,13 @@ class LevitationListener implements Listener {
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
         if (event.getEntity() instanceof Player && event.getDamager() instanceof ShulkerBullet) {
             Player player = (Player) event.getEntity();
-            hitByShulkerBulletMap.put(player.getUniqueId(), true);
+
+            // If player has levitation effect, play sound immediately
+            if (player.hasPotionEffect(PotionEffectType.LEVITATION)) {
+                player.playSound(player.getLocation(), "custom.believe", 5.0f, 1.0f);
+            } else {
+                hitByShulkerBulletMap.put(player.getUniqueId(), true);
+            }
         }
     }
 
