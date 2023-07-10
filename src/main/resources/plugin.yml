@@ -1,0 +1,13 @@
+name: believe
+version: '${version}'
+main: nray7882.believe.Believe
+api-version: '1.20'
+load: STARTUP
+authors: [NRay7882]
+description: If I just believe it, then I can do it!
+website: https://github.com/NRay7882
+sounds:
+  custom.believe:
+    sound: custom.believe
+    pitch: 1
+    volume: 2
